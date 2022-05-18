@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.LineNumberReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -46,6 +49,21 @@ public class Labirynt {
                 }
             }
         }
+    }
+
+    public void czytajWagi() {      //do zrobienia czytanie
+
+    }
+
+    public boolean testWag() {
+        for( Punkt p : pkt ) {
+            for( Edge e : p.getEdges() ) {
+                if( e.getTo() != null ) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public List<Punkt> getPkt() {
