@@ -18,5 +18,6 @@ public class Main {
             }
         }
         System.out.println("wczytano " + l.getN());
+        System.out.println(l.testWag());
     }
 }

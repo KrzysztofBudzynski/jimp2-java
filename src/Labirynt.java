@@ -51,15 +51,13 @@ public class Labirynt {
         }
     }
 
-    public void czytajWagi() {      //do zrobienia czytanie
-
-    }
-
-    public boolean testWag() {
-        for( Punkt p : pkt ) {
-            for( Edge e : p.getEdges() ) {
-                if( e.getTo() != null ) {
-                    return false;
+    public boolean testWag() {      // raczej działa
+        for( int i = 0; i < this.n; i++ ) {
+            for( int k = 0; k < 2; k++ ) {
+                if( pkt.get(i).getEdges().get(k).getTo() != null ) {
+                    if( pkt.get(i).getEdges().get(k).getWaga() !=
+                        pkt.get(i).getEdges().get(k).getTo().getEdges().get(k+2).getWaga())
+                        return false;
                 }
             }
         }
