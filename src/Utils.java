@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class Utils {
     public static Labirynt readLabirynt( String path ) throws IOException {
@@ -59,5 +60,52 @@ public class Utils {
             ln++;
         }
         return l;
+    }
+
+    public static double[] initDijkstra( Labirynt l, int start ) throws IOException, NullPointerException {
+        if( start < 0 || start >= l.getN() ) throw new IOException("zły start: " + start);
+        double[] min = new double[l.getN()];
+        int[] odw = new int[l.getN()];
+        int[] przez = new int[l.getN()];
+
+        Arrays.fill(min, Integer.MAX_VALUE);
+        Arrays.fill(odw, 0);
+
+        min[start] = 0;
+        przez[start] = start;
+        dijkstra(l, min, odw, przez, l.getPkt().get(start));
+
+        return min;
+    }
+
+    private static void dijkstra( Labirynt l, double[] min, int[] odw, int[] przez, Punkt p ) {
+        if( p == null || odw[p.getIndex()] != 0 ) return;
+        odw[p.getIndex()] = 1;
+        for( Edge e : p.getEdges() ) {
+            if( e.getTo() == null ) continue;
+            if( min[p.getIndex()] + e.getWaga() < min[e.getTo().getIndex()] ) {
+                min[e.getTo().getIndex()] = min[p.getIndex()] + e.getWaga();
+                przez[e.getTo().getIndex()] = p.getIndex();
+            }
+        }
+        int obok = gdzie( min, odw );
+        if( obok == Integer.MAX_VALUE ) return;
+
+        dijkstra(l, min, odw, przez, l.getPkt().get(obok));
+    }
+
+    private static int gdzie( double[] min, int[] odw ) {
+        int tam = Integer.MAX_VALUE;
+        double tmp = Integer.MAX_VALUE;
+        for( int i = 0; i < min.length; i++ ) {
+            if( min[i] < tmp && odw[i] == 0 ) {
+                tmp = min[i];
+                tam = i;
+            }
+        }
+        return tam;
+    }
+    private static boolean odwiedzono( Punkt p, int[] odw ) {
+        return odw[p.getIndex()] != 0;
     }
 }

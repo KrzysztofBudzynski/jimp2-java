@@ -10,7 +10,7 @@ public class Main {
             l.genWagi();
         }
         if (args.length == 2) {
-            try {
+            try {                   //C:\Users\kszyh\IdeaProjects\jimp2-java\Dane\test.txt
                 l = Utils.readLabirynt(args[1]);
             } catch (IOException e) {
                 System.err.println(e.getMessage());
@@ -19,5 +19,14 @@ public class Main {
         }
         System.out.println("wczytano " + l.getN());
         System.out.println(l.testWag());
+
+        try {
+            double[] wynik = Utils.initDijkstra(l, 0);
+            for( double d : wynik ) {
+                System.out.println(d);
+            }
+        } catch (IOException|NullPointerException e) {
+            e.printStackTrace();
+        }
     }
 }

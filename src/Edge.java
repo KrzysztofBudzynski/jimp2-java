@@ -1,6 +1,6 @@
 public class Edge {
-    private final Punkt from;
-    private final Punkt to;
+    private Punkt from;
+    private Punkt to;
     private double waga;
 
     public Edge(Punkt a, Punkt b) {
@@ -11,6 +11,11 @@ public class Edge {
     public Edge() {
         this.from = null;
         this.to = null;
+    }
+
+    public void setNull() {
+        this.to = null;
+        this.from = null;
     }
 
     public void setWaga(double waga) {
