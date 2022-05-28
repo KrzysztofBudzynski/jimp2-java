@@ -10,7 +10,7 @@ public class Main {
             l.genWagi();
         }
         if (args.length == 2) {
-            try {                   //C:\Users\kszyh\IdeaProjects\jimp2-java\Dane\test.txt
+            try {
                 l = Utils.readLabirynt(args[1]);
             } catch (IOException e) {
                 System.err.println(e.getMessage());
@@ -20,10 +20,18 @@ public class Main {
         System.out.println("wczytano " + l.getN());
         System.out.println(l.testWag());
 
+        Dijkstra d = new Dijkstra(l, 0);
+        d.launch();
+
         try {
             double[] wynik = Utils.initDijkstra(l, 0);
-            for( double d : wynik ) {
-                System.out.println(d);
+            for( double db : wynik ) {
+                System.out.println(db);
+            }
+            for( int i = 0; i < wynik.length; i++ ) {
+                if( wynik[i] != d.getMin()[i] ) {
+                    System.out.println("TA? TO CHUJOWO");
+                }
             }
         } catch (IOException|NullPointerException e) {
             e.printStackTrace();
