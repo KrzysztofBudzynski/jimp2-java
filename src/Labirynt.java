@@ -9,6 +9,7 @@ public class Labirynt {
     private final int h;
     private final int w;
     private final int n;
+    private int cz; //ile części
 
     private List<Punkt> pkt;
 
@@ -36,6 +37,7 @@ public class Labirynt {
                 pkt.get(i).getEdges().add(new Edge(pkt.get(i), pkt.get(i-1)));
             } else pkt.get(i).getEdges().add(new Edge());
         }
+        this.cz = 1;
     }
 
     public void genWagi() {
@@ -62,6 +64,26 @@ public class Labirynt {
             }
         }
         return true;
+    }
+
+    public void dziel( int cz ) {
+        this.cz = cz;
+        dzielThread.start();
+    }
+
+     private Thread dzielThread = new Thread(new Runnable() {
+        @Override
+        public synchronized void run() {
+            funkcjaDzielenia(cz);
+        }
+    });
+
+    private void funkcjaDzielenia( int n ) {
+        Random r = new Random();
+        int a = Math.abs(r.nextInt() % h);    // oś y
+        int b = Math.abs(r.nextInt() % w);    // oś x
+        System.out.println(a + " " + b);
+        System.out.println("Proces");
     }
 
     public List<Punkt> getPkt() {
