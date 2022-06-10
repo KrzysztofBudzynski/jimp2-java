@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class Dijkstra {
+public class Dijkstra extends Thread {
     private Labirynt l;
     private int[] odw;
     private int[] przez;
@@ -50,7 +50,23 @@ public class Dijkstra {
         return tam;
     }
 
+    @Override
+    public synchronized void start() {
+        launch();
+    }
+
+    public int[] getOdw() {
+        return odw;
+    }
+
     public double[] getMin() {
         return min;
+    }
+
+    public boolean testOdw() {
+        for( int j : odw ) {
+            if( j != 1 ) return false;
+        }
+        return true;
     }
 }
