@@ -25,5 +25,8 @@ public class Main {
             System.err.println(e.getLocalizedMessage());
         }
         l.dziel(2);
+        Bfs bfs = new Bfs(l, 0);
+        bfs.launch();
+        System.out.println("stan spojnosci grafu:" + bfs.getSpojny());
     }
 }
