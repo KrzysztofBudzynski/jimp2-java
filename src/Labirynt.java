@@ -80,15 +80,15 @@ public class Labirynt {
         Random r = new Random();
         int a = Math.abs(r.nextInt() % (int)(h * 0.33)) + (int)(h * 0.33);    // oś y
         int b = Math.abs(r.nextInt() % (int)(w * 0.33)) + (int)(w * 0.33);    // oś x
-        System.out.println(a + " " + b);
-        System.out.println("Wywołanie");
+       // System.out.println(a + " " + b);
+       // System.out.println("Wywołanie");
         rekDzielenie( getPkt().get( a * w + b ) );
-        System.out.println("Wywołanie");
+        //System.out.println("Wywołanie");
         rekDzielenie( getPkt().get( a * w + b ) );
     }
 
     private void rekDzielenie( Punkt p ) {
-        System.out.println("Iteracja " + p);
+        //System.out.println("Iteracja " + p);
         int a = p.getWiersz();
         int b = p.getKolumna();
         int k;
@@ -97,7 +97,7 @@ public class Labirynt {
 
         do {
             k = Math.abs(r.nextInt() % 4);
-            System.out.println(k);
+           // System.out.println(k);
             next = p.getEdges().get(k).getTo();
         } while( p.getEdges().get(k).getTo() == null );
 

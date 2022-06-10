@@ -24,9 +24,9 @@ public class Main {
         } catch (InterruptedException e) {
             System.err.println(e.getLocalizedMessage());
         }
-        l.dziel(2);
+        l.dziel(5);
         Bfs bfs = new Bfs(l, 0);
-        bfs.launch();
+        bfs.start();
         System.out.println("stan spojnosci grafu:" + bfs.getSpojny());
     }
 }

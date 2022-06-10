@@ -1,4 +1,4 @@
-public class Bfs {
+public class Bfs extends Thread {
     private Labirynt l;
     private boolean[] odwiedzono;
     private Stack stack;
@@ -55,9 +55,14 @@ public class Bfs {
         
 
     }
+    @Override
+    public synchronized void start() {
+        launch();
+    }
     public boolean getSpojny()
         {
             return spojny;
         }
+    
 
 }
