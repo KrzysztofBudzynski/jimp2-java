@@ -36,5 +36,9 @@ public class Main {
         } catch (IOException|NullPointerException e) {
             e.printStackTrace();
         }
+
+        Dfs df = new Dfs(l, 0);
+        df.launch();
+        System.out.println(df.getSpojny());
     }
 }
