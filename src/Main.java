@@ -37,8 +37,8 @@ public class Main {
             e.printStackTrace();
         }
 
-        Dfs df = new Dfs(l, 0);
-        df.launch();
-        System.out.println(df.getSpojny());
+        Bfs bfs = new Bfs(l, 0);
+        bfs.launch();
+        System.out.println("stan spojnosci grafu:" + bfs.getSpojny());
     }
 }

@@ -1,11 +1,11 @@
-public class Dfs {
+public class Bfs {
     private Labirynt l;
     private boolean[] odwiedzono;
     private Stack stack;
     private int s;
     private Punkt current;
     private boolean spojny;
-    public Dfs(Labirynt l, int start)
+    public Bfs(Labirynt l, int start)
     {  
         this.s = start;
         this.l = l;
