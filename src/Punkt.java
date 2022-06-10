@@ -32,6 +32,13 @@ public class Punkt {
         edges = new ArrayList<>();
     }
 
+    public void nullify(int k ) {      // k kierunkiem
+        if( this.getEdges().get(k).getTo() == null ) return;
+
+        getEdges().get(k).getTo().getEdges().get((k+2) % 4).setWaga(-1);
+        getEdges().get(k).setWaga(-1);
+    }
+
     @Override
     public String toString() {
         List<Integer> to = edges.stream()
